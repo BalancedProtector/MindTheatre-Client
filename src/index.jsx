@@ -1,13 +1,15 @@
+//Create Root
 import { createRoot } from 'react-dom/client';
+
+//importing MainView component from components folder
+import { MainView } from './Components/main-view/main-view';
+
 //import statement to indicate that you need to bundle `./index.scss`
 import "./index.scss";
+
 //Main component
 const MindTheatreApp = () => {
-    return (
-        <div className="mind-theatre">
-            <div>Good Morning</div>
-        </div>
-    );
+    return <MainView />;
 };
 //find the root of the app
 const container = document.querySelector("#root");
