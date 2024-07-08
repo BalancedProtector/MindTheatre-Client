@@ -32,45 +32,48 @@ export const SignupView = () => {
     };
 
     return (
-        <form onSubmit={handleSubmit}>
-            <label>
-                Username:
-                <input
+        <Form onSubmit={handleSubmit}>
+            <Form.Group controlID="formName">
+                <Form.Label>Username:</Form.Label>
+                <Form.control
                     type="text"
                     value={name}
                     onChange={(e) => setName(e.target.value)}
                     required
-                    minLength="2"
+                    minLength="3"
                 />
-            </label>
-            <label>
-                Password:
-                <input
+
+            </Form.Group>
+            <Form.Group controlID="formPassword">
+                <Form.Label>Password:</Form.Label>
+                <Form.Control
                     type="password"
                     value={password}
                     onChange={(e) => setPassword(e.target.value)}
                     required
                 />
-            </label>
-            <label>
-                Email:
-                <input
+            </Form.Group>
+            <Form.Group controlID="formEmail">
+                <Form.Label>Email:</Form.Label>
+                <Form.Control
                     type="email"
                     value={email}
                     onChange={(e) => setEmail(e.target.value)}
                     required
                 />
-            </label>
-            <label>
-                Birthday:
-                <input
+            </Form.Group>
+            <Form.Group controlID="formBirthday">
+                <Form.Label>Birthday:</Form.Label>
+                <Form.Control
                     type="date"
                     value={birthday}
                     onChange={(e) => setBirthday(e.target.value)}
                     required
                 />
-            </label>
-            <button type="submit">Submit</button>
-        </form>
+            </Form.Group>
+            <Button variant="primary" type="submit">
+                Submit
+            </Button>
+        </Form>
     )
 }

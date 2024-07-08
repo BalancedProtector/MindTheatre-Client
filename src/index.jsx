@@ -4,7 +4,10 @@ import { createRoot } from 'react-dom/client';
 //importing MainView component from components folder
 import { MainView } from './Components/main-view/main-view';
 
-//import statement to indicate that you need to bundle `./index.scss`
+//import boostrap css
+import "boostrap/dist/css/bootstrap.min.css";
+
+//import index.scss
 import "./index.scss";
 
 //Main component
