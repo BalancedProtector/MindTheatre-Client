@@ -4,12 +4,22 @@ import { createRoot } from 'react-dom/client';
 //importing MainView component from components folder
 import { MainView } from './Components/main-view/main-view';
 
-//import statement to indicate that you need to bundle `./index.scss`
+//import boostrap css -> changed to scss import
+
+//import index.scss
 import "./index.scss";
+
+//Importing Containers
+import { Container } from 'react-bootstrap';
 
 //Main component
 const MindTheatreApp = () => {
-    return <MainView />;
+    return (
+        <Container>
+            <MainView />;
+        </Container>
+
+    );
 };
 //find the root of the app
 const container = document.querySelector("#root");
