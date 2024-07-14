@@ -4,6 +4,36 @@ import { Button, Card } from "react-bootstrap";
 import { Link } from "react-router-dom";
 
 export const MovieCard = ({ movie }) => {
+    const user = JSON.parse(localStorage.getItem("user"));
+    const token = localStorage.getItem("token");
+
+    const AddFavoriteMovie = () => {
+        fetch(`https://mindtheatre.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+            method: "POST",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                alert("Movie added to favorites!");
+            });
+    }
+    const RemoveFavoriteMovie = () => {
+        fetch(`https://mindtheatre.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+            method: "DELETE",
+            headers: {
+                Authorization: `Bearer ${token}`,
+            },
+        })
+            .then((response) => response.json())
+            .then((data) => {
+                console.log(data);
+                alert("Movie removed from favorites!");
+            });
+    }
+
     return (
         <Card>
             <Card.Img variant="top" src={movie.image} />
@@ -11,9 +41,11 @@ export const MovieCard = ({ movie }) => {
                 <Card.Title>{movie.title}</Card.Title>
                 <Card.Text>{movie.genre.name}</Card.Text>
                 <Card.Text>{movie.description}</Card.Text>
-                <Link to={`/movies/$encodeURIComponent(movie.id)}`}>
+                <Link to={`/movies/$(movie.id)}`}>
                     <Button variant="link">Open</Button>
                 </Link>
+                <Button onClick={AddFavoriteMovie}>Add to Favorites</Button>
+                <Button onClick={RemoveFavoriteMovie}>Remove from Favorites</Button>
             </Card.Body>
         </Card>
     );
