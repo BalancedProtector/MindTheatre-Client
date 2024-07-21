@@ -5,6 +5,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
 import { BrowserRouter, Routes, Route, Navigate } from "react-router-dom";
@@ -45,9 +46,9 @@ export const MainView = () => {
                                 {user ? (
                                     <Navigate to="/" />
                                 ) : (
-                                    <col md={5}>
+                                    <Col md={5}>
                                         <SignupView />
-                                    </col>
+                                    </Col>
                                 )}
                             </>
                         }
@@ -103,16 +104,20 @@ export const MainView = () => {
                         }
                     />
                 </Routes>
-                <button
-                    onClick={() => {
-                        setUser(null);
-                        setToken(null);
-                        localStorage.clear();
-                    }}
-                >
-                    Logout
-                </button>
+                <Col md={12} className="d-flex justify-content-center">
+                    <Button
+                        variant="primary"
+                        onClick={() => {
+                            setUser(null);
+                            setToken(null);
+                            localStorage.clear();
+                        }}
+                    >
+                        Logout
+                    </Button>
+                </Col>
+
             </Row>
-        </BrowserRouter>
+        </BrowserRouter >
     );
 };

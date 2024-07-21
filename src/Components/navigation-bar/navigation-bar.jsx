@@ -1,8 +1,11 @@
 import Container from "react-bootstrap/Container";
 import Navbar from "react-bootstrap/Navbar";
+import Nav from "react-bootstrap/Nav";
+import { Link } from "react-router-dom";
+
 export const NavigationBar = ({ user, onLoggedOut }) => {
     return (
-        <Navbar bg="light" expand="lg" classname="justify-content-between">
+        <Navbar bg="light" expand="lg" className="justify-content-between">
             <Container>
                 <Navbar.Brand as={Link} to="/">Mind Theatre</Navbar.Brand>
                 <Navbar.Toggle aria-controls="basic-navbar-nav" />
