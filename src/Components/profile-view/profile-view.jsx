@@ -16,7 +16,7 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
         return user.FavoriteMovies.includes(movies._id);
     })
     const getUser = () => {
-        axios.get(`https://mindtheatre.herokuapp.com/users/${localStorage.getItem("user")}`, {
+        axios.get(`https://mind-theatre-api-dc69e2dcb161.herokuapp.com/users/${localStorage.getItem("user")}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         })
             .then((response) => {
@@ -28,7 +28,7 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
     }
     const handleSubmit = (e) => {
         e.preventDefault();
-        axios.put(`https://mindtheatre.herokuapp.com/users/${localStorage.getItem("user")}`, {
+        axios.put(`https://mind-theatre-api-dc69e2dcb161.herokuapp.com/users/${localStorage.getItem("user")}`, {
             Username: user.Username,
             Password: user.Password,
             Email: user.Email,
@@ -47,7 +47,7 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
             });
     }
     const removeFavorite = (id) => {
-        axios.delete(`https://mindtheatre.herokuapp.com/users/${localStorage.getItem("user")}/movies/${id}`, {
+        axios.delete(`https://mind-theatre-api-dc69e2dcb161.herokuapp.com/users/${localStorage.getItem("user")}/movies/${id}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         })
             .then((response) => {

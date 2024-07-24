@@ -16,12 +16,12 @@ export const MainView = () => {
     const [movies, setMovies] = useState([]);
     const [token, setToken] = useState(null);
     const [user, setUser] = useState(storedUser ? storedUser : null);
-
+    const [apiUrl, setApiUrl] = useState("https://mind-theatre-api-dc69e2dcb161.herokuapp.com/");
     useEffect(() => {
         //requires a valid token before allowing the user to see the movies
         if (!token) return;
 
-        fetch("https://mindtheatre.herokuapp.com/movies", {
+        fetch(apiUrl + "movies", {
             headers: { Authorization: `Bearer ${token}` },
         })
             .then((response) => response.json())

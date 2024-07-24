@@ -1,4 +1,4 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
 import Col from "react-bootstrap/Col";
@@ -15,7 +15,7 @@ export const LoginView = ({ onLoggedIn }) => {
             Password: password,
         };
 
-        fetch("https://mindtheatre.herokuapp.com/login", {
+        fetch("https://mind-theatre-api-dc69e2dcb161.herokuapp.com/login", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",
@@ -34,8 +34,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 }
             })
             .catch((e) => {
-                console.error("Login error: ", e);
-                alert("Something went wrong! Please try again.");
+                console.error("Login error: ", error);
             });
     };
 

@@ -6,7 +6,7 @@ import "./profile-view.scss";
 
 function FavoriteMovies({ favoriteMovieList }) {
     const removeFavorite = (movieId) => {
-        axios.delete(`https://mindtheatre.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movieId}`, {
+        axios.delete(`https://mind-theatre-api-dc69e2dcb161.herokuapp.com/users/${localStorage.getItem("user")}/movies/${movieId}`, {
             headers: { Authorization: `Bearer ${localStorage.getItem("token")}` },
         })
             .then((response) => {

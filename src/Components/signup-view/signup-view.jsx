@@ -11,13 +11,26 @@ export const SignupView = () => {
 
     const handleSubmit = (event) => {
         event.preventDefault();
+        // Check if the username is empty
+        if (!name.trim()) {
+            alert("Username is required");
+            return;
+        }
+
+        // Check if the username contains only alphanumeric characters
+        if (!/^[a-zA-Z0-9]+$/.test(name)) {
+            alert("Username contains non alphanumeric characters - not allowed.");
+            return;
+        }
+
         const data = {
-            Username: name,
+            Name: name,
             Password: password,
             Email: email,
             Birthday: birthday
         };
-        fetch("https://mindtheatre.herokuapp.com/users", {
+
+        fetch("https://mind-theatre-api-dc69e2dcb161.herokuapp.com/users", {
             method: "POST",
             headers: {
                 "Content-Type": "application/json",

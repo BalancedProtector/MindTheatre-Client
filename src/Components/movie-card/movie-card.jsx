@@ -8,7 +8,7 @@ export const MovieCard = ({ movie }) => {
     const token = localStorage.getItem("token");
 
     const AddFavoriteMovie = () => {
-        fetch(`https://mindtheatre.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+        fetch(`https://mind-theatre-api-dc69e2dcb161.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
             method: "POST",
             headers: {
                 Authorization: `Bearer ${token}`,
@@ -21,7 +21,7 @@ export const MovieCard = ({ movie }) => {
             });
     }
     const RemoveFavoriteMovie = () => {
-        fetch(`https://mindtheatre.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
+        fetch(`https://mind-theatre-api-dc69e2dcb161.herokuapp.com/users/${user.Username}/movies/${movie._id}`, {
             method: "DELETE",
             headers: {
                 Authorization: `Bearer ${token}`,
