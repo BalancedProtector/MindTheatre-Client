@@ -13203,4 +13203,36 @@ textarea.form-control-lg {
 .AddFavoriteMovie {
   margin: auto;
 }
+
+.FavoriteMovie {
+  margin-bottom: 15px;
+}
+
+.FavoriteMovie figure {
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  width: 100%;
+  margin: auto;
+  position: relative;
+  overflow: hidden;
+}
+
+.FavoriteMovie figure img {
+  height: 400px;
+  margin: auto;
+  display: block;
+}
+
+.FavoriteMovie figure figcaption {
+  text-align: center;
+}
+
+.FavoriteMovie button.btn {
+  margin: auto;
+  display: block;
+}
+
+.card {
+  margin-bottom: 15px;
+}
 /*# sourceMappingURL=index.2212206d.css.map */

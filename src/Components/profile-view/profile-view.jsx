@@ -1,13 +1,14 @@
-import React, { useEffect, useState } from "react";
+import axios from "axios";
+import React, { useEffect, useState, useRef } from "react";
 import { Container, Col, Row, Card } from "react-bootstrap";
 import "./profile-view.scss";
-import axios from "axios";
 import UserInfo from "./user-info";
 import UpdateUser from "./update-user";
-import { FavoriteMovies } from "./favorite-movies";
+import FavoriteMovies from "./favorite-movies";
+
 export function ProfileView({ movies, onUpdatedUserInfo }) {
     const [user, setUser] = useState({
-        Username: null,
+        Name: null,
         Password: null,
         Email: null,
         Birthday: null,
@@ -29,7 +30,7 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.put(`https://mind-theatre-api-dc69e2dcb161.herokuapp.com/users/${localStorage.getItem("user")}`, {
-            Username: user.Username,
+            Name: user.Name,
             Password: user.Password,
             Email: user.Email,
             Birthday: user.Birthday,
@@ -38,7 +39,8 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
         })
             .then((response) => {
                 const data = response.data;
-                localStorage.setItem("user", data.Username);
+                localStorage.setItem("user", data.Name);
+                setUser(data);
                 onUpdatedUserInfo(data);
                 alert("Changes saved successfully!");
             })
@@ -63,11 +65,12 @@ export function ProfileView({ movies, onUpdatedUserInfo }) {
         e.preventDefault();
         getUser();
     }
+    const isMounted = useRef(false);
     useEffect(() => {
+        isMounted.current = true;
         getUser();
-        isMounted && getUser();
         return () => {
-            isMounted = false;
+            isMounted.current = false;
         }
     }, []);
 

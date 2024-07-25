@@ -5,6 +5,7 @@ import { MovieView } from "../movie-view/movie-view";
 import { LoginView } from "../login-view/login-view";
 import { SignupView } from "../signup-view/signup-view";
 import { NavigationBar } from "../navigation-bar/navigation-bar";
+import { ProfileView } from "../profile-view/profile-view";
 import Button from "react-bootstrap/Button";
 import Row from "react-bootstrap/Row";
 import Col from "react-bootstrap/Col";
@@ -73,13 +74,12 @@ export const MainView = () => {
                             <>
                                 {!user ? (
                                     <Navigate to="/login" replace />
-                                ) : useBootstrapBreakpoints.length === 0 ? (
-                                    <Col>This list is empty!</Col>
                                 ) : (
-                                    <Col md={8}>
-                                        <MovieView movies={movies} />
-                                    </Col>
+                                    <Col>This list is empty!</Col>
                                 )}
+                                <Col md={8}>
+                                    <MovieView movies={movies} />
+                                </Col>
                             </>
                         }
                     />
@@ -99,6 +99,20 @@ export const MainView = () => {
                                             </Col>
                                         ))}
                                     </>
+                                )}
+                            </>
+                        }
+                    />
+                    <Route
+                        path="/profile"
+                        element={
+                            <>
+                                {!user ? (
+                                    <Navigate to="/login" replace />
+                                ) : (
+                                    <Col md={8}>
+                                        <ProfileView movies={movies} user={user} />
+                                    </Col>
                                 )}
                             </>
                         }

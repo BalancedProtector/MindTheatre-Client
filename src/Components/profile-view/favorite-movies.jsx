@@ -1,7 +1,8 @@
 import React from "react";
 import Button from "react-bootstrap/Button";
+import Card from "react-bootstrap/Card";
 import { Link } from "react-router-dom";
-import { Col, Row, Figure, Button } from "react-bootstrap";
+import { Container, Col, Row, Figure, Button } from "react-bootstrap";
 import "./profile-view.scss";
 
 function FavoriteMovies({ favoriteMovieList }) {

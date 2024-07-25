@@ -1,11 +1,11 @@
 import React from 'react';
 function UserInfo({ email, name }) {
     return (
-        <>
-            <h4>About You</h4>
-            <p>Name:{name}</p>
-            <p>e-mail:{email}</p>
-        </>
+        <div>
+            <h4>{name}</h4>
+            <p>Username: {name}</p>
+            <p>E-mail:{email}</p>
+        </div>
     )
 }
 export default UserInfo

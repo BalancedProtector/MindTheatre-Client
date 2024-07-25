@@ -34,7 +34,7 @@ export const LoginView = ({ onLoggedIn }) => {
                 }
             })
             .catch((e) => {
-                console.error("Login error: ", error);
+                console.error("Login error: ", e);
             });
     };
 
