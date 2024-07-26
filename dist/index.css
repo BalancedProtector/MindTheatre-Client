@@ -1,3 +1,15 @@
+.back-button {
+  color: #f5f5f5;
+  background-color: #1e90ff;
+  border: none;
+  border-radius: 4px;
+  padding: 4px 12px;
+}
+
+.AddFavoriteMovie {
+  margin: auto;
+}
+
 :root, [data-bs-theme="light"] {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -13191,48 +13203,4 @@ textarea.form-control-lg {
 .mind-theatre {
   color: #4682b4;
 }
-
-.back-button {
-  color: #f5f5f5;
-  background-color: #1e90ff;
-  border: none;
-  border-radius: 4px;
-  padding: 4px 12px;
-}
-
-.AddFavoriteMovie {
-  margin: auto;
-}
-
-.FavoriteMovie {
-  margin-bottom: 15px;
-}
-
-.FavoriteMovie figure {
-  text-overflow: ellipsis;
-  white-space: nowrap;
-  width: 100%;
-  margin: auto;
-  position: relative;
-  overflow: hidden;
-}
-
-.FavoriteMovie figure img {
-  height: 400px;
-  margin: auto;
-  display: block;
-}
-
-.FavoriteMovie figure figcaption {
-  text-align: center;
-}
-
-.FavoriteMovie button.btn {
-  margin: auto;
-  display: block;
-}
-
-.card {
-  margin-bottom: 15px;
-}
-/*# sourceMappingURL=index.2212206d.css.map */
+/*# sourceMappingURL=index.css.map */

@@ -1,46 +1,53 @@
-import { useState } from "react";
+import React, { useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
-
-const data = {
-    Name: username,
-    Password: password
-};
+import Col from "react-bootstrap/Col";
 
 export const LoginView = ({ onLoggedIn }) => {
+    const [name, setName] = useState("");
+    const [password, setPassword] = useState("");
 
+    const handleSubmit = (e) => {
+        e.preventDefault(); // Prevent default form submission behavior
 
-    fetch("https://mindtheatre.herokuapp.com/login", {
-        method: "POST",
-        headers: {
-            "Content-Type": "application/json",
-        },
-        body: JSON.stringify(data)
-    })
-        .then((response) => response.json())
-        .then((data) => {
-            console.log("Login response: ", data);
-            if (data.user) {
-                localStorage.setItem("user", JSON.stringify(data.user));
-                localStorage.setItem("token", data.token);
-                onLoggedIn(data.user, data.token);
-            } else {
-                alert("Invalid username or password. Please Try Again.");
-            }
+        const data = {
+            Name: name,
+            Password: password,
+        };
+
+        fetch("https://mind-theatre-api-dc69e2dcb161.herokuapp.com/login", {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(data),
         })
-        .catch((e) => {
-            alert("Something went wrong! Please try again.");
-        });
+            .then((response) => response.json())
+            .then((data) => {
+                console.log("Login response: ", data);
+                if (data.user) {
+                    localStorage.setItem("user", JSON.stringify(data.user));
+                    localStorage.setItem("token", data.token);
+                    onLoggedIn(data.user, data.token);
+                } else {
+                    alert("Invalid username or password. Please Try Again.");
+                }
+            })
+            .catch((e) => {
+                console.error("Login error: ", e);
+            });
+    };
 
     return (
         <Form onSubmit={handleSubmit}>
-            <Form.Group controlID="formName">
+            <Form.Group controlId="formName">
                 <Form.Label>Username:</Form.Label>
                 <Form.Control
                     type="text"
                     value={name}
-                    onChange={(e) => SVGAnimateTransformElement(e.target.value)}
-                    requiredminLength="3"
+                    onChange={(e) => setName(e.target.value)}
+                    required
+                    minLength="3"
                 />
             </Form.Group>
             <Form.Group controlId="formPassword">
@@ -52,10 +59,12 @@ export const LoginView = ({ onLoggedIn }) => {
                     required
                 />
             </Form.Group>
-            <Button variant="primary" type="submit">
-                Submit
-            </Button>
-        </Form>
-    )
+            <Col md={12} className="d-flex justify-content-center" >
+                <Button className="mb-2" variant="primary" type="submit">
+                    Submit
+                </Button>
+            </Col>
 
-}
+        </Form>
+    );
+};
